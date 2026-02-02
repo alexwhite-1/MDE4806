@@ -1,5 +1,3 @@
-//QUADRATURE OUTPUT
-//
 //Author: Alex White, 2/2/2026
 //Version: 1
 //
@@ -15,3 +13,18 @@
 
 
 #include "quadrature_output.hpp"
+
+#define HIGH 1;
+#define LOW 0;
+//defauly cycles per revolution
+#define CYCLES_PER_REV_DEFAULT 4096;
+//absolute position calculated at 640 Hz
+#define CALCULATION_RATE 640;
+//quadrature states output at a rate of 6900 Hz
+#define OUTPUT_RATE 6900;
+//Cyles per revolution (chosen by programmer, default 4096). Corresponds to 4*n counts per revolution.
+#define CYCLES_PER_REV CYCLES_PER_REV_DEFAULT;
+//Output channels, starting low. Index goes high only when the angle is 0 and both channels are low.
+int CHANNEL_A, CHANNEL_B, INDEX = 0;
+//flag for whether or not the inclinometer has been calibrated and the output should begin.
+bool calibrated = false;
